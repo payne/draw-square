@@ -1,0 +1,54 @@
+<html>
+ <head>
+  <meta name="viewport" content="width = device-width, initial-scale = 1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <title>Draw Square Exercise</title>
+ </head>
+ <body>
+  <script>
+
+  function main() {
+    draw_square(3);
+    console.log("done");
+  }
+  function draw_square(n) {
+    draw_line(n, 0, 1);
+    draw_line(n, 1, 0);
+    draw_line(n, 0, -1);
+    draw_line(n, -1, 0);
+  }
+  function draw_line(w, dx, dy) {
+    var x = 0;
+    var y = 0;
+    var c = 0;
+    for (c=0; c < w; c++) {
+      plot_pixel(x,y,0xffffff);
+      x = x + dx;
+      y = y + dy;
+    }
+  }
+  function plot_pixel(x, y, color) {
+    // TODO
+    var canvas = document.getElementById('grid');
+    var ctx = canvas.getContext('2d');
+    
+    ctx.fillStyle = 'rgb(200, 0, 0)';
+    ctx.fillRect(100+x*20, 100+y*20, 20, 20);
+    console.log("plot_pixel("+x+", "+y+", "+color+")");
+  }
+
+  </script>
+  
+  <br/>
+  <canvas id="grid" width="400" height="400"></canvas>
+  <br/>
+  
+  <script>
+    /* global $*/
+    /* global main */
+    $(document).ready(main);
+  </script>
+ </body>
+</html>
